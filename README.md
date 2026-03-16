@@ -1,6 +1,6 @@
 # sats-connect-skills
 
-AI coding agent skills for the [Sats Connect SDK](https://github.com/secretkeylabs/sats-connect). Each skill teaches an AI agent how to use a specific sats-connect method, including its parameters, usage examples, and expected responses.
+AI coding agent skills for the [Sats Connect SDK](https://github.com/secretkeylabs/sats-connect). Each skill teaches an AI agent how to use a specific Sats Connect method, including its parameters, usage examples, and expected responses.
 
 ## Categories
 
