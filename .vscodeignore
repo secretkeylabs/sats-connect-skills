@@ -1,0 +1,12 @@
+# Source and config
+src/
+scripts/
+tsconfig.json
+
+# Dev tooling
+node_modules/
+.gitignore
+
+# Build artifacts not needed
+**/*.ts
+!dist/**/*.d.ts

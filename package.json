@@ -1,0 +1,386 @@
+{
+  "name": "sats-connect-skills",
+  "displayName": "Sats Connect Skills",
+  "description": "AI coding agent skills for the Sats Connect SDK — teaches agents how to use sats-connect wallet, Bitcoin, ordinals, runes, Spark, and Stacks methods.",
+  "version": "0.1.0",
+  "publisher": "Secret Key Labs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/secretkeylabs/sats-connect-skills.git"
+  },
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "AI",
+    "Chat"
+  ],
+  "scripts": {
+    "compile": "bun build src/extension.ts --outdir dist --target node --format cjs",
+    "watch": "bun build src/extension.ts --outdir dist --target node --format cjs --watch",
+    "generate-skills": "bun run scripts/generate-skills.ts",
+    "package": "bunx @vscode/vsce package --no-dependencies",
+    "publish": "bunx @vscode/vsce publish --no-dependencies",
+    "vscode:prepublish": "bun run scripts/generate-skills.ts && bun run compile"
+  },
+  "main": "./dist/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "skills": [
+      {
+        "id": "sats-connect.createInscription",
+        "name": "sats-connect-createInscription",
+        "description": "Request the creation of an inscription via the user's wallet. This is an Xverse custom method using the legacy callback API.",
+        "file": "./skills/sats-connect-createInscription/SKILL.md"
+      },
+      {
+        "id": "sats-connect.createRepeatInscriptions",
+        "name": "sats-connect-createRepeatInscriptions",
+        "description": "Inscribe the same content multiple times via the user's wallet. This is an Xverse custom method using the legacy callback API.",
+        "file": "./skills/sats-connect-createRepeatInscriptions/SKILL.md"
+      },
+      {
+        "id": "sats-connect.getAccounts",
+        "name": "sats-connect-getAccounts",
+        "description": "Legacy method to connect to the user's wallet and get account data. Superseded by wallet_connect.",
+        "file": "./skills/sats-connect-getAccounts/SKILL.md"
+      },
+      {
+        "id": "sats-connect.getAddresses",
+        "name": "sats-connect-getAddresses",
+        "description": "Retrieve the current account's Bitcoin addresses (payment and ordinals) from the connected wallet.",
+        "file": "./skills/sats-connect-getAddresses/SKILL.md"
+      },
+      {
+        "id": "sats-connect.getBalance",
+        "name": "sats-connect-getBalance",
+        "description": "Retrieve the user's Bitcoin balance from their connected wallet's payment address.",
+        "file": "./skills/sats-connect-getBalance/SKILL.md"
+      },
+      {
+        "id": "sats-connect.getInfo",
+        "name": "sats-connect-getInfo",
+        "description": "Retrieve information about the wallet provider, including the provider name, version, supported methods, and supported address purposes.",
+        "file": "./skills/sats-connect-getInfo/SKILL.md"
+      },
+      {
+        "id": "sats-connect.getProviderById",
+        "name": "sats-connect-getProviderById",
+        "description": "Select a specific wallet provider by its unique identifier for targeted RPC calls.",
+        "file": "./skills/sats-connect-getProviderById/SKILL.md"
+      },
+      {
+        "id": "sats-connect.getProviders",
+        "name": "sats-connect-getProviders",
+        "description": "Detect installed wallet providers that support the WBIP-004 Wallet Provider standard, returning an array of available wallet providers.",
+        "file": "./skills/sats-connect-getProviders/SKILL.md"
+      },
+      {
+        "id": "sats-connect.ord-getInscriptions",
+        "name": "sats-connect-ord-getInscriptions",
+        "description": "Retrieve all inscriptions owned by the user's connected wallet's ordinal address.",
+        "file": "./skills/sats-connect-ord-getInscriptions/SKILL.md"
+      },
+      {
+        "id": "sats-connect.ord-sendInscriptions",
+        "name": "sats-connect-ord-sendInscriptions",
+        "description": "Request inscription transfers from the user's connected wallet's ordinal address.",
+        "file": "./skills/sats-connect-ord-sendInscriptions/SKILL.md"
+      },
+      {
+        "id": "sats-connect.runes-estimateEtch",
+        "name": "sats-connect-runes-estimateEtch",
+        "description": "Estimate the cost of a Rune etch order before executing it.",
+        "file": "./skills/sats-connect-runes-estimateEtch/SKILL.md"
+      },
+      {
+        "id": "sats-connect.runes-estimateMint",
+        "name": "sats-connect-runes-estimateMint",
+        "description": "Estimate the cost of a Rune mint order before executing it.",
+        "file": "./skills/sats-connect-runes-estimateMint/SKILL.md"
+      },
+      {
+        "id": "sats-connect.runes-estimateRbfOrder",
+        "name": "sats-connect-runes-estimateRbfOrder",
+        "description": "Estimate the cost of speeding up a Rune mint or etch order using Replace-by-Fee (RBF).",
+        "file": "./skills/sats-connect-runes-estimateRbfOrder/SKILL.md"
+      },
+      {
+        "id": "sats-connect.runes-etch",
+        "name": "sats-connect-runes-etch",
+        "description": "Execute a Rune etch order and prompt the user to sign the funding transaction.",
+        "file": "./skills/sats-connect-runes-etch/SKILL.md"
+      },
+      {
+        "id": "sats-connect.runes-getBalance",
+        "name": "sats-connect-runes-getBalance",
+        "description": "Retrieve all Rune token balances owned by the user's connected wallet address.",
+        "file": "./skills/sats-connect-runes-getBalance/SKILL.md"
+      },
+      {
+        "id": "sats-connect.runes-getOrder",
+        "name": "sats-connect-runes-getOrder",
+        "description": "Fetch the status of a Rune mint or etch order.",
+        "file": "./skills/sats-connect-runes-getOrder/SKILL.md"
+      },
+      {
+        "id": "sats-connect.runes-mint",
+        "name": "sats-connect-runes-mint",
+        "description": "Execute a Rune mint order and prompt the user to sign the funding transaction.",
+        "file": "./skills/sats-connect-runes-mint/SKILL.md"
+      },
+      {
+        "id": "sats-connect.runes-rbfOrder",
+        "name": "sats-connect-runes-rbfOrder",
+        "description": "Speed up a Rune mint or etch order by replacing stuck transactions at a higher fee rate using RBF.",
+        "file": "./skills/sats-connect-runes-rbfOrder/SKILL.md"
+      },
+      {
+        "id": "sats-connect.runes-transfer",
+        "name": "sats-connect-runes-transfer",
+        "description": "Request Runes token transfers from the user's wallet, supporting multiple recipient transfers in a single request.",
+        "file": "./skills/sats-connect-runes-transfer/SKILL.md"
+      },
+      {
+        "id": "sats-connect.sendTransfer",
+        "name": "sats-connect-sendTransfer",
+        "description": "Request a Bitcoin transfer to one or more recipients from the user's wallet.",
+        "file": "./skills/sats-connect-sendTransfer/SKILL.md"
+      },
+      {
+        "id": "sats-connect.signMessage",
+        "name": "sats-connect-signMessage",
+        "description": "Request the user to sign a message with their Bitcoin wallet address.",
+        "file": "./skills/sats-connect-signMessage/SKILL.md"
+      },
+      {
+        "id": "sats-connect.signMultipleMessages",
+        "name": "sats-connect-signMultipleMessages",
+        "description": "Request the user to sign multiple messages in a single batch. This is an Xverse custom method.",
+        "file": "./skills/sats-connect-signMultipleMessages/SKILL.md"
+      },
+      {
+        "id": "sats-connect.signMultipleTransactions",
+        "name": "sats-connect-signMultipleTransactions",
+        "description": "Request signing of multiple PSBTs in a single request. This is an Xverse custom method using the legacy callback API.",
+        "file": "./skills/sats-connect-signMultipleTransactions/SKILL.md"
+      },
+      {
+        "id": "sats-connect.signPsbt",
+        "name": "sats-connect-signPsbt",
+        "description": "Request the user to sign a Partially Signed Bitcoin Transaction (PSBT) with their Bitcoin wallet addresses.",
+        "file": "./skills/sats-connect-signPsbt/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-flashnet-addLiquidity",
+        "name": "sats-connect-spark-flashnet-addLiquidity",
+        "description": "Add liquidity to an existing Flashnet pool. (Coming soon)",
+        "file": "./skills/sats-connect-spark-flashnet-addLiquidity/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-flashnet-clawbackFunds",
+        "name": "sats-connect-spark-flashnet-clawbackFunds",
+        "description": "Recover stuck funds from a Flashnet transfer that was not claimed by the recipient.",
+        "file": "./skills/sats-connect-spark-flashnet-clawbackFunds/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-flashnet-confirmInitialDeposit",
+        "name": "sats-connect-spark-flashnet-confirmInitialDeposit",
+        "description": "Confirm the initial deposit for a newly created Flashnet liquidity pool. (Coming soon)",
+        "file": "./skills/sats-connect-spark-flashnet-confirmInitialDeposit/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-flashnet-createBondingPool",
+        "name": "sats-connect-spark-flashnet-createBondingPool",
+        "description": "Create a bonding curve liquidity pool on the Flashnet. (Coming soon)",
+        "file": "./skills/sats-connect-spark-flashnet-createBondingPool/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-flashnet-createCPPool",
+        "name": "sats-connect-spark-flashnet-createCPPool",
+        "description": "Create a constant product liquidity pool on the Flashnet. (Coming soon)",
+        "file": "./skills/sats-connect-spark-flashnet-createCPPool/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-flashnet-executeRouteSwap",
+        "name": "sats-connect-spark-flashnet-executeRouteSwap",
+        "description": "Execute a multi-hop token swap on the Flashnet, routing through multiple pools. (Coming soon)",
+        "file": "./skills/sats-connect-spark-flashnet-executeRouteSwap/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-flashnet-executeSwap",
+        "name": "sats-connect-spark-flashnet-executeSwap",
+        "description": "Execute a token swap on the Flashnet. (Coming soon)",
+        "file": "./skills/sats-connect-spark-flashnet-executeSwap/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-flashnet-getClawbackEligibleTransfers",
+        "name": "sats-connect-spark-flashnet-getClawbackEligibleTransfers",
+        "description": "Check for pending Flashnet transfers that are eligible for clawback recovery.",
+        "file": "./skills/sats-connect-spark-flashnet-getClawbackEligibleTransfers/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-flashnet-getJWT",
+        "name": "sats-connect-spark-flashnet-getJWT",
+        "description": "Request a Flashnet JSON Web Token (JWT) from the user's wallet, used to authenticate with Flashnet services.",
+        "file": "./skills/sats-connect-spark-flashnet-getJWT/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-flashnet-removeLiquidity",
+        "name": "sats-connect-spark-flashnet-removeLiquidity",
+        "description": "Remove liquidity from a Flashnet pool. (Coming soon)",
+        "file": "./skills/sats-connect-spark-flashnet-removeLiquidity/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-flashnet-signIntent",
+        "name": "sats-connect-spark-flashnet-signIntent",
+        "description": "Sign a Flashnet intent using the user's wallet. Intents represent actions to be executed on the Flashnet.",
+        "file": "./skills/sats-connect-spark-flashnet-signIntent/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-flashnet-signStructuredMessage",
+        "name": "sats-connect-spark-flashnet-signStructuredMessage",
+        "description": "Sign a structured Flashnet message using the user's wallet, typically used for typed or domain-specific data signing.",
+        "file": "./skills/sats-connect-spark-flashnet-signStructuredMessage/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-getAddress",
+        "name": "sats-connect-spark-getAddress",
+        "description": "Retrieve the user's Spark address from their connected wallet for receiving BTC on the Spark layer.",
+        "file": "./skills/sats-connect-spark-getAddress/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-getBalance",
+        "name": "sats-connect-spark-getBalance",
+        "description": "Retrieve the user's Spark BTC balance from their connected wallet.",
+        "file": "./skills/sats-connect-spark-getBalance/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-signMessage",
+        "name": "sats-connect-spark-signMessage",
+        "description": "Request the user to sign a message with their Spark key.",
+        "file": "./skills/sats-connect-spark-signMessage/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-transfer",
+        "name": "sats-connect-spark-transfer",
+        "description": "Send BTC to a recipient on the Spark layer from the user's wallet.",
+        "file": "./skills/sats-connect-spark-transfer/SKILL.md"
+      },
+      {
+        "id": "sats-connect.spark-transferToken",
+        "name": "sats-connect-spark-transferToken",
+        "description": "Send a Spark BTKN token to a recipient on the Spark layer from the user's wallet.",
+        "file": "./skills/sats-connect-spark-transferToken/SKILL.md"
+      },
+      {
+        "id": "sats-connect.stx-callContract",
+        "name": "sats-connect-stx-callContract",
+        "description": "Request a smart contract function call on the Stacks blockchain through the user's wallet.",
+        "file": "./skills/sats-connect-stx-callContract/SKILL.md"
+      },
+      {
+        "id": "sats-connect.stx-deployContract",
+        "name": "sats-connect-stx-deployContract",
+        "description": "Deploy a Clarity smart contract to the Stacks blockchain through the user's wallet.",
+        "file": "./skills/sats-connect-stx-deployContract/SKILL.md"
+      },
+      {
+        "id": "sats-connect.stx-getAccounts",
+        "name": "sats-connect-stx-getAccounts",
+        "description": "Retrieve the user's Stacks (STX) account addresses from their connected wallet.",
+        "file": "./skills/sats-connect-stx-getAccounts/SKILL.md"
+      },
+      {
+        "id": "sats-connect.stx-signMessage",
+        "name": "sats-connect-stx-signMessage",
+        "description": "Request the user to sign a message with their Stacks account.",
+        "file": "./skills/sats-connect-stx-signMessage/SKILL.md"
+      },
+      {
+        "id": "sats-connect.stx-signStructuredMessage",
+        "name": "sats-connect-stx-signStructuredMessage",
+        "description": "Request the user to sign a structured message following the SIP-018 standard with their Stacks account.",
+        "file": "./skills/sats-connect-stx-signStructuredMessage/SKILL.md"
+      },
+      {
+        "id": "sats-connect.stx-signTransaction",
+        "name": "sats-connect-stx-signTransaction",
+        "description": "Request the user to sign a Stacks transaction with their wallet.",
+        "file": "./skills/sats-connect-stx-signTransaction/SKILL.md"
+      },
+      {
+        "id": "sats-connect.stx-transferStx",
+        "name": "sats-connect-stx-transferStx",
+        "description": "Request a STX token transfer from the user's Stacks account to a recipient address.",
+        "file": "./skills/sats-connect-stx-transferStx/SKILL.md"
+      },
+      {
+        "id": "sats-connect.wallet-addNetwork",
+        "name": "sats-connect-wallet-addNetwork",
+        "description": "Request adding a new custom network to the user's wallet. The user will be prompted to approve the network addition.",
+        "file": "./skills/sats-connect-wallet-addNetwork/SKILL.md"
+      },
+      {
+        "id": "sats-connect.wallet-changeNetwork",
+        "name": "sats-connect-wallet-changeNetwork",
+        "description": "Request the user's wallet to switch to a different network (e.g. from mainnet to testnet).",
+        "file": "./skills/sats-connect-wallet-changeNetwork/SKILL.md"
+      },
+      {
+        "id": "sats-connect.wallet-connect",
+        "name": "sats-connect-wallet-connect",
+        "description": "Connect your app to the user's Xverse wallet using wallet_connect, which grants read permissions and returns account data like addresses and network info.",
+        "file": "./skills/sats-connect-wallet-connect/SKILL.md"
+      },
+      {
+        "id": "sats-connect.wallet-disconnect",
+        "name": "sats-connect-wallet-disconnect",
+        "description": "Disconnect your app from the user's wallet, clearing all permissions for all wallet accounts.",
+        "file": "./skills/sats-connect-wallet-disconnect/SKILL.md"
+      },
+      {
+        "id": "sats-connect.wallet-getAccount",
+        "name": "sats-connect-wallet-getAccount",
+        "description": "Get the user's wallet account information, including the wallet type and account creation method.",
+        "file": "./skills/sats-connect-wallet-getAccount/SKILL.md"
+      },
+      {
+        "id": "sats-connect.wallet-getNetwork",
+        "name": "sats-connect-wallet-getNetwork",
+        "description": "Retrieve the currently active Bitcoin and Stacks network (mainnet, testnet, etc.) from the user's wallet.",
+        "file": "./skills/sats-connect-wallet-getNetwork/SKILL.md"
+      },
+      {
+        "id": "sats-connect.wallet-openBridge",
+        "name": "sats-connect-wallet-openBridge",
+        "description": "Open the wallet's bridge flow, enabling the user to bridge assets between networks.",
+        "file": "./skills/sats-connect-wallet-openBridge/SKILL.md"
+      },
+      {
+        "id": "sats-connect.wallet-openBuy",
+        "name": "sats-connect-wallet-openBuy",
+        "description": "Open the wallet's buy flow, enabling the user to purchase BTC through the wallet's built-in purchase interface.",
+        "file": "./skills/sats-connect-wallet-openBuy/SKILL.md"
+      },
+      {
+        "id": "sats-connect.wallet-openEarn",
+        "name": "sats-connect-wallet-openEarn",
+        "description": "Open the wallet's earn flow, enabling the user to earn yield on their BTC. (Coming soon)",
+        "file": "./skills/sats-connect-wallet-openEarn/SKILL.md"
+      },
+      {
+        "id": "sats-connect.wallet-openReceive",
+        "name": "sats-connect-wallet-openReceive",
+        "description": "Open the wallet's receive screen, allowing the user to view their address and QR code for receiving funds.",
+        "file": "./skills/sats-connect-wallet-openReceive/SKILL.md"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/bun": "1.3.10",
+    "@types/vscode": "1.110.0",
+    "typescript": "5.9.3"
+  }
+}
